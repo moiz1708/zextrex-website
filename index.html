@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zextrex Technology — Engineering Intelligence, Shaping the Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04060f;
+  --bg-2:#080c1c;
+  --panel:rgba(146,178,255,.055);
+  --panel-2:rgba(146,178,255,.10);
+  --line:rgba(140,170,255,.18);
+  --ink:#e9edfb;
+  --muted:#8e9abd;
+  --cyan:#24e0ff;
+  --violet:#8b5cff;
+  --glow:rgba(36,224,255,.35);
+  --radius:14px;
+  --maxw:1140px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+:root:not([data-theme="dark"]) .theme-note{display:none}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#eef1fa; --bg-2:#e4e9f7;
+    --panel:rgba(20,40,90,.045); --panel-2:rgba(20,40,90,.09);
+    --line:rgba(20,45,110,.16);
+    --ink:#0d1330; --muted:#4d5878;
+    --cyan:#0090b8; --violet:#5b34e0;
+    --glow:rgba(0,144,184,.22);
+    color-scheme:light;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#04060f; --bg-2:#080c1c;
+  --panel:rgba(146,178,255,.055); --panel-2:rgba(146,178,255,.10);
+  --line:rgba(140,170,255,.18);
+  --ink:#e9edfb; --muted:#8e9abd;
+  --cyan:#24e0ff; --violet:#8b5cff; --glow:rgba(36,224,255,.35);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(78px + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 700px at 78% -8%, rgba(139,92,255,.22), transparent 60%),
+    radial-gradient(900px 600px at 8% 10%, rgba(36,224,255,.16), transparent 62%),
+    var(--bg);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:"Space Grotesk","IBM Plex Sans",system-ui,sans-serif;line-height:1.08;letter-spacing:-.02em;margin:0}
+p{margin:0 0 1rem}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:68px 68px;
+  mask-image:radial-gradient(circle at 50% 22%,#000 0%,transparent 72%);
+  -webkit-mask-image:radial-gradient(circle at 50% 22%,#000 0%,transparent 72%);}
+
+/* ---------- nav ---------- */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:18px;height:72px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.06rem;letter-spacing:-.01em}
+.brand small{display:block;font-family:"IBM Plex Sans",sans-serif;font-weight:400;font-size:.66rem;color:var(--muted);letter-spacing:.02em}
+.mark{width:34px;height:34px;flex:0 0 34px;filter:drop-shadow(0 0 10px var(--glow))}
+nav.links{margin-left:auto;display:flex;gap:26px;align-items:center}
+nav.links a{text-decoration:none;color:var(--muted);font-size:.92rem;transition:color .2s}
+nav.links a:hover,nav.links a:focus-visible{color:var(--ink)}
+.icon-btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);width:40px;height:40px;border-radius:11px;
+  display:grid;place-items:center;cursor:pointer;transition:border-color .2s,background .2s}
+.icon-btn:hover{border-color:var(--cyan);background:var(--panel-2)}
+.burger{display:none}
+@media(max-width:860px){nav.links{display:none}nav.links.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;
+  align-items:flex-start;gap:4px;padding:16px 22px 22px;background:var(--bg-2);border-bottom:1px solid var(--line)}
+  nav.links.open a{padding:9px 0;font-size:1.02rem}
+  .burger{display:grid}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;z-index:1;padding:76px 0 90px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero{padding:52px 0 64px}}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;color:var(--muted);
+  border:1px solid var(--line);background:var(--panel);padding:6px 13px;border-radius:999px;margin-bottom:22px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 var(--glow);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1.title{font-size:clamp(2.6rem,6.4vw,4.35rem);font-weight:700}
+.sub{font-family:"Space Grotesk",sans-serif;font-size:clamp(1.05rem,2.2vw,1.38rem);color:var(--cyan);margin:16px 0 20px;letter-spacing:.005em}
+.lede{color:var(--muted);max-width:56ch;font-size:1.04rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}
+.btn{font-family:"Space Grotesk",sans-serif;font-size:.95rem;font-weight:500;padding:13px 24px;border-radius:12px;border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:transform .18s,box-shadow .2s,border-color .2s}
+.btn-primary{background:linear-gradient(120deg,var(--cyan),var(--violet));color:#04060f;box-shadow:0 10px 34px -12px var(--glow)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);background:var(--panel);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--cyan)}
+.core{position:relative;aspect-ratio:1/1;max-width:460px;margin-inline:auto;width:100%}
+.core canvas{width:100%;height:100%;display:block}
+.core::after{content:"";position:absolute;inset:14%;border-radius:50%;
+  background:radial-gradient(circle,rgba(139,92,255,.30),transparent 68%);filter:blur(22px);z-index:-1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:54px}
+.stat{background:var(--bg-2);padding:22px 20px}
+.stat b{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.7rem;font-weight:700}
+.stat span{color:var(--muted);font-size:.85rem}
+@media(max-width:620px){.stats{grid-template-columns:1fr}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:1;padding:86px 0;border-top:1px solid var(--line)}
+.sec-head{max-width:62ch;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.sec-head p{color:var(--muted);margin-top:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px}
+.card{background:linear-gradient(180deg,var(--panel),transparent);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;position:relative;overflow:hidden}
+.card h3{font-size:1.16rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.94rem;margin:0}
+.card .ico{width:38px;height:38px;margin-bottom:16px;color:var(--cyan)}
+.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.55}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:start}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:34px}}
+.about-grid p{color:var(--muted);max-width:66ch}
+.about-grid strong{color:var(--ink);font-weight:600}
+.about-facts{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:26px}
+.about-facts dl{margin:0}
+.about-facts dl>div{padding:12px 0;border-bottom:1px solid var(--line)}
+.about-facts dl>div:last-child{border-bottom:none}
+.about-facts dt{font-size:.78rem;color:var(--muted)}
+.about-facts dd{margin:4px 0 0;font-size:.95rem}
+.about-facts dd a{color:var(--cyan);text-decoration:none;word-break:break-all}
+.values{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+.values h3{font-size:1.02rem;margin-bottom:12px}
+.values p{font-size:.9rem;margin-bottom:9px}
+
+/* full-screen views */
+.view{position:fixed;inset:0;z-index:70;background:var(--bg);overflow-y:auto;display:none;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.view.open{display:block}
+body.locked{overflow:hidden}
+.view-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;height:72px;
+  padding:0 22px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px)}
+.view-bar .mark{width:28px;height:28px;flex:0 0 28px}
+.view-bar b{font-family:"Space Grotesk",sans-serif;font-size:1rem}
+.view-body{padding:44px 0 80px}
+.view-body .sec-head{margin-bottom:38px}
+.service{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--panel),transparent);padding:30px;margin-bottom:18px}
+.service h3{font-size:1.28rem;margin-bottom:6px}
+.service .tagline{color:var(--cyan);font-size:.9rem;margin-bottom:14px}
+.service p{color:var(--muted);max-width:70ch}
+.service ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:.93rem}
+.service li{margin-bottom:6px}
+.service .meta{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.project{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:26px;display:flex;flex-direction:column}
+.project .sector{font-size:.78rem;color:var(--cyan);margin-bottom:8px}
+.project h3{font-size:1.1rem;margin-bottom:10px}
+.project p{color:var(--muted);font-size:.92rem;margin:0 0 16px}
+.project .result{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-family:"Space Grotesk",sans-serif;font-size:.92rem}
+.project .result b{color:var(--cyan)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.tag{font-size:.74rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:760px){.founders{grid-template-columns:1fr}}
+.founder{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--panel);display:flex;gap:18px;align-items:flex-start}
+.avatar{width:58px;height:58px;flex:0 0 58px;border-radius:15px;display:grid;place-items:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.25rem;color:#04060f;background:linear-gradient(140deg,var(--cyan),var(--violet))}
+.founder h3{font-size:1.14rem}
+.founder .role{color:var(--cyan);font-size:.86rem;margin:4px 0 10px}
+.founder p{color:var(--muted);font-size:.93rem;margin:0}
+
+/* ---------- assistant section ---------- */
+.assistant-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:start}
+@media(max-width:940px){.assistant-grid{grid-template-columns:1fr}}
+.chat-shell{border:1px solid var(--line);border-radius:18px;background:var(--bg-2);overflow:hidden;display:flex;flex-direction:column;min-height:500px;box-shadow:0 30px 70px -40px var(--glow)}
+.chat-top{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid var(--line);background:var(--panel)}
+.chat-top .mark{width:28px;height:28px;flex:0 0 28px}
+.chat-top b{font-family:"Space Grotesk",sans-serif;font-size:.98rem;display:block}
+.chat-top span{font-size:.75rem;color:var(--muted)}
+.log{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;max-height:460px}
+.msg{max-width:84%;padding:12px 15px;border-radius:14px;font-size:.94rem;line-height:1.6;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{background:var(--panel-2);border:1px solid var(--line);border-top-left-radius:4px;align-self:flex-start}
+.msg.me{background:linear-gradient(120deg,var(--cyan),var(--violet));color:#04060f;border-top-right-radius:4px;align-self:flex-end}
+.msg.sys{align-self:center;font-size:.8rem;color:var(--muted);background:none;border:none;text-align:center;max-width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 12px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:7px 13px;font-size:.81rem;cursor:pointer;font-family:inherit;transition:color .2s,border-color .2s}
+.chip:hover{color:var(--ink);border-color:var(--cyan)}
+.composer{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line);background:var(--panel)}
+.composer input{flex:1;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:11px;padding:12px 14px;font:inherit;font-size:.94rem;outline:none}
+.composer input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--glow)}
+.send{border:none;border-radius:11px;padding:0 17px;background:linear-gradient(120deg,var(--cyan),var(--violet));color:#04060f;cursor:pointer;display:grid;place-items:center}
+.send:disabled{opacity:.45;cursor:not-allowed}
+.typing span{display:inline-block;width:6px;height:6px;margin-right:4px;border-radius:50%;background:var(--cyan);animation:blink 1.3s infinite}
+.typing span:nth-child(2){animation-delay:.18s}.typing span:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* ---------- contact ---------- */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.mailcard{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:var(--panel);text-decoration:none;display:block;transition:border-color .2s,transform .2s}
+.mailcard:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.mailcard h3{font-size:1.05rem;margin-bottom:6px}
+.mailcard .addr{color:var(--cyan);font-size:.95rem;word-break:break-all}
+.mailcard p{color:var(--muted);font-size:.88rem;margin:8px 0 0}
+
+footer{border-top:1px solid var(--line);padding:38px 0;position:relative;z-index:1;color:var(--muted);font-size:.87rem}
+.foot{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+
+/* ---------- floating chat ---------- */
+.launcher{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;
+  width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;
+  background:linear-gradient(140deg,var(--cyan),var(--violet));color:#04060f;
+  display:grid;place-items:center;box-shadow:0 16px 40px -12px var(--glow)}
+.launcher:hover{transform:translateY(-2px)}
+.dock{position:fixed;right:20px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:60;width:min(390px,calc(100vw - 40px));
+  display:none;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--bg-2);box-shadow:0 30px 80px -30px #000}
+.dock.open{display:block}
+.dock .log{max-height:min(46vh,340px)}
+.dock .chat-shell{min-height:0;border:none;box-shadow:none}
+/* ---------- contact modal ---------- */
+.modal-overlay{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
+  background:rgba(2,4,12,.66);backdrop-filter:blur(4px);padding:20px}
+.modal-overlay.open{display:flex}
+.modal{width:100%;max-width:440px;background:var(--bg-2);border:1px solid var(--line);border-radius:16px;
+  overflow:hidden;box-shadow:0 30px 80px -25px #000}
+.modal-head{display:flex;align-items:center;gap:12px;padding:18px 18px;border-bottom:1px solid var(--line);background:var(--panel)}
+.modal-head .mark{width:26px;height:26px;flex:0 0 26px}
+.modal-head b{display:block;font-family:"Space Grotesk",sans-serif;font-size:.98rem}
+.modal-to{font-size:.78rem;color:var(--muted)}
+.modal-to strong{color:var(--cyan);font-weight:500}
+.modal-head .icon-btn{margin-left:auto;width:32px;height:32px}
+.modal-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:.8rem;color:var(--muted);margin-top:10px}
+.field-label:first-child{margin-top:0}
+.modal-body input,.modal-body textarea{background:var(--bg);border:1px solid var(--line);color:var(--ink);
+  border-radius:10px;padding:11px 13px;font:inherit;font-size:.93rem;outline:none;resize:vertical;width:100%}
+.modal-body input:focus,.modal-body textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--glow)}
+.modal-status{min-height:1.1em;font-size:.85rem;margin-top:4px}
+.modal-status.ok{color:#3fe0a0}
+.modal-status.err{color:#ff7a8a}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="mesh" aria-hidden="true"></div>
+
+<!-- logo template -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="zg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#24e0ff"/><stop offset="100%" stop-color="#8b5cff"/>
+    </linearGradient>
+    <symbol id="zmark" viewBox="0 0 48 48">
+      <path d="M24 2 43 13v22L24 46 5 35V13z" fill="none" stroke="url(#zg)" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M16 17h16l-16 14h16" fill="none" stroke="url(#zg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="mark"><use href="#zmark"/></svg>
+      <span>Zextrex Technology<small>Engineering Intelligence, Shaping the Future</small></span>
+    </a>
+    <nav class="links" id="links">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#" data-view="services">Services</a>
+      <a href="#" data-view="projects">Projects</a>
+      <a href="#founders">Founders</a>
+      <a href="#zextrex">Zextrex AI</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="icon-btn" id="voiceBtn" title="Voice on/off" aria-label="Turn assistant voice on or off">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path id="voiceIcon" d="M11 5 6 9H3v6h3l5 4zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>
+    </button>
+    <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="status"><i class="dot"></i> Zextrex core online — assistant listening</span>
+        <h1 class="title">Intelligence, built to be useful.</h1>
+        <p class="sub">Engineering Intelligence, Shaping the Future</p>
+        <p class="lede">Zextrex Technology designs AI systems that think alongside your team assistants that answer, models that predict, and automation that quietly removes the work nobody wanted to do.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="heroTalk">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Talk to Zextrex
+          </button>
+          <a class="btn btn-ghost" href="#capabilities">See what we build</a>
+        </div>
+      </div>
+      <div class="core"><canvas id="core" aria-hidden="true"></canvas></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="s1">24/7</b><span>Assistant availability</span></div>
+      <div class="stat"><b id="s2">24</b><span>Projects delivered</span></div>
+      <div class="stat"><b id="s3">∞</b><span>Questions Zextrex will take</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="sec-head">
+            <h2>About Zextrex Technology</h2>
+            <p>An AI company built by two engineers who kept meeting the same problem: teams surrounded by data and still doing the thinking by hand.</p>
+          </div>
+          <p>Zextrex Technology was founded by <strong>Muhammad Moiz</strong> and <strong>Muhammad Qasim</strong> to close that gap. We design and deploy applied artificial intelligence assistants that hold a real conversation, models that see what is coming, and automation that takes the repetitive middle out of a workflow. Everything we ship is built on the client's own data and measured against the client's own numbers.</p>
+          <p>We work in small, senior teams. A founder stays on every project from the first conversation to the final deployment, which is why our scope documents are short and our timelines hold. We would rather hand over a narrow system that works on Monday than a wide one that demos well and stalls in production.</p>
+          <p>Our work reaches customer support, education, commerce, logistics and healthcare operations anywhere a decision repeats often enough that a machine can learn its shape. The assistant on this page, Zextrex, is the same technology we build for clients, pointed at our own company.</p>
+        </div>
+        <aside class="about-facts">
+          <dl>
+            <div><dt>Founded by</dt><dd>Muhammad Moiz &amp; Muhammad Qasim</dd></div>
+            <div><dt>What we do</dt><dd>Conversational AI, predictive systems, workflow automation, applied research</dd></div>
+            <div><dt>How we work</dt><dd>Discovery, prototype, evaluation, deployment, and support after launch</dd></div>
+            <div><dt>Projects delivered</dt><dd>24 and counting</dd></div>
+            <div><dt>Official email</dt><dd><a href="mailto:zextrextechnology@gmail.com">zextrextechnology@gmail.com</a></dd></div>
+            <div><dt>Support email</dt><dd><a href="mailto:zextrexsupport@gmail.com">zextrexsupport@gmail.com</a></dd></div>
+          </dl>
+          <div class="values">
+            <h3>What we hold to</h3>
+            <p><strong>Useful before impressive.</strong> A model earns its place by changing a number that matters.</p>
+            <p><strong>Plain answers.</strong> No jargon between you and your own system.</p>
+            <p><strong>Safe by default.</strong> Evaluation and review happen before users arrive, not after.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What we engineer</h2>
+        <p>Four practices, one idea: software that understands context before it acts.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 7l4 3M18 7l-4 3M6 17l4-3M18 17l-4-3"/></svg>
+          <h3>Conversational AI</h3>
+          <p>Assistants that hold a thread, remember the brief, and speak your customer's language across web, app and voice.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l5-6 4 4 4-7 5 9"/><path d="M3 21h18"/></svg>
+          <h3>Predictive systems</h3>
+          <p>Forecasting, scoring and anomaly detection trained on your own data, delivered as an API your team can trust.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h4a2 2 0 0 1 2 2v4"/></svg>
+          <h3>Workflow automation</h3>
+          <p>Documents read, tickets routed, reports written — the repetitive middle of a process handled end to end.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v6c0 4.4-3.4 7.4-8 8-4.6-.6-8-3.6-8-8V7z"/><path d="M9.5 12.2l1.9 1.9 3.6-3.8"/></svg>
+          <h3>Applied research</h3>
+          <p>Prototype to production: model selection, evaluation and safety review before anything reaches your users.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="founders">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Two founders, one workbench</h2>
+        <p>Zextrex Technology was started by engineers who would rather ship a working system than describe one.</p>
+      </div>
+      <div class="founders">
+        <article class="founder">
+          <div class="avatar">MM</div>
+          <div>
+            <h3>Muhammad Moiz</h3>
+            <div class="role">Co-Founder</div>
+            <p>Leads product direction and the architecture behind Zextrex assistants from model orchestration to the interface people actually touch.</p>
+          </div>
+        </article>
+        <article class="founder">
+          <div class="avatar">MQ</div>
+          <div>
+            <h3>Muhammad Qasim</h3>
+            <div class="role">Co-Founder</div>
+            <p>Leads engineering and delivery data pipelines, evaluation, and keeping every deployment fast, observable and dependable.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="zextrex">
+    <div class="wrap">
+      <div class="assistant-grid">
+        <div>
+          <div class="sec-head" style="margin-bottom:24px">
+            <h2>Meet Zextrex</h2>
+            <p>Our in-house assistant. Ask it about the company, our work, or anything else on your mind, it replies in its own indirect, suggestive style rather than blunt one-liners, and it can read its answers aloud.</p>
+          </div>
+          <p class="lede" style="font-size:.95rem">Ask it about a service, a past project, or the problem you are trying to solve it will take you to the right part of the company.</p>
+        </div>
+
+        <div class="chat-shell" id="mainShell">
+          <div class="chat-top">
+            <svg class="mark"><use href="#zmark"/></svg>
+            <div><b>Zextrex</b><span id="statusLine">Assistant · online</span></div>
+          </div>
+          <div class="log" id="log" role="log" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+          <form class="composer" id="form">
+            <label class="sr" for="input">Message Zextrex</label>
+            <input id="input" autocomplete="off" placeholder="Ask Zextrex anything…">
+            <button class="send" id="send" type="submit" aria-label="Send">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Start a conversation</h2>
+        <p>Tell us what you are trying to build, or what is slowing your team down. We answer both inboxes ourselves.</p>
+      </div>
+      <div class="contact">
+        <a class="mailcard" href="mailto:zextrextechnology@gmail.com">
+          <h3>Official</h3>
+          <div class="addr">zextrextechnology@gmail.com</div>
+          <p>Projects, partnerships and anything for the founders.</p>
+        </a>
+        <a class="mailcard" href="mailto:zextrexsupport@gmail.com">
+          <h3>Customer support</h3>
+          <div class="addr">zextrexsupport@gmail.com</div>
+          <p>Existing deployments, accounts and technical help.</p>
+        </a>
+        <div class="mailcard" style="cursor:default">
+          <h3>Ask first</h3>
+          <div class="addr">Zextrex assistant</div>
+          <p>Not sure which inbox fits? Put the question to Zextrex and it will point you the right way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Zextrex Technology — Engineering Intelligence, Shaping the Future</span>
+    <span>Founded by Muhammad Moiz &amp; Muhammad Qasim</span>
+  </div>
+</footer>
+
+<!-- ===== Services window ===== -->
+<div class="view" id="view-services" role="dialog" aria-modal="true" aria-label="Services" aria-hidden="true">
+  <div class="view-bar">
+    <svg class="mark"><use href="#zmark"/></svg>
+    <b>Services</b>
+    <button class="icon-btn" data-close style="margin-left:auto" aria-label="Close services">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="view-body wrap">
+    <div class="sec-head">
+      <h2>What we can build for you</h2>
+      <p>Six services, each sold as a working system rather than a retainer. Every engagement starts with a two-week discovery and ends with something in production.</p>
+    </div>
+
+    <article class="service">
+      <h3>Conversational AI assistants</h3>
+      <div class="tagline">Chat, voice and in-app assistants that hold a thread</div>
+      <p>We build assistants that know your product, your policies and your tone the way Zextrex knows this company. They answer customers, guide staff through procedures, and hand over to a human the moment a conversation needs one.</p>
+      <ul>
+        <li>Website, WhatsApp, mobile app and voice channels</li>
+        <li>Grounded on your documents, so answers cite your own material</li>
+        <li>Escalation rules, transcripts and quality review built in</li>
+        <li>Multilingual, including English and Urdu</li>
+      </ul>
+      <div class="meta">Typical delivery: 3–6 weeks · Ongoing tuning available</div>
+    </article>
+
+    <article class="service">
+      <h3>Predictive systems</h3>
+      <div class="tagline">Forecasting, scoring and anomaly detection</div>
+      <p>Your history already contains the pattern. We turn it into a model that estimates demand, flags risk, ranks leads or catches the transaction that does not belong then wrap it in an API your existing software can call.</p>
+      <ul>
+        <li>Demand and inventory forecasting</li>
+        <li>Churn, credit and lead scoring</li>
+        <li>Fraud and anomaly detection</li>
+        <li>Accuracy reported against a baseline you agree to up front</li>
+      </ul>
+      <div class="meta">Typical delivery: 4–8 weeks · Requires historical data</div>
+    </article>
+
+    <article class="service">
+      <h3>Workflow automation</h3>
+      <div class="tagline">The repetitive middle, handled end to end</div>
+      <p>Invoices read, tickets routed, applications screened, reports written. We map the process first, automate only the parts that are safe to automate, and leave a clear audit trail for the rest.</p>
+      <ul>
+        <li>Document understanding for invoices, forms and contracts</li>
+        <li>Email and ticket triage with automatic routing</li>
+        <li>Scheduled reporting and summarisation</li>
+        <li>Human approval steps wherever a decision carries weight</li>
+      </ul>
+      <div class="meta">Typical delivery: 3–5 weeks</div>
+    </article>
+
+    <article class="service">
+      <h3>Custom AI product development</h3>
+      <div class="tagline">From idea to a shipped application</div>
+      <p>When the AI is the product, not a feature. We take a concept through prototype, user testing and launch interface, backend, model layer and deployment with a founder on the build throughout.</p>
+      <ul>
+        <li>Web and mobile applications with AI at the core</li>
+        <li>Model selection, prompt and retrieval architecture</li>
+        <li>Usage analytics, cost control and scaling plan</li>
+      </ul>
+      <div class="meta">Typical delivery: 8–16 weeks</div>
+    </article>
+
+    <article class="service">
+      <h3>Data engineering and integration</h3>
+      <div class="tagline">The groundwork intelligence stands on</div>
+      <p>Models fail on messy inputs long before they fail on mathematics. We clean, connect and structure your data, then keep it flowing so the system you paid for is still accurate a year later.</p>
+      <ul>
+        <li>Pipelines from your CRM, ERP, database or spreadsheets</li>
+        <li>Cleaning, labelling and dataset preparation</li>
+        <li>Monitoring, retraining schedules and drift alerts</li>
+      </ul>
+      <div class="meta">Typical delivery: 2–6 weeks</div>
+    </article>
+
+    <article class="service">
+      <h3>AI consulting and applied research</h3>
+      <div class="tagline">Decide what to build before building it</div>
+      <p>A short, honest engagement for teams weighing options. We audit where AI would actually pay back, benchmark the approaches, and write the plan including the cases where our recommendation is to do nothing yet.</p>
+      <ul>
+        <li>Opportunity audit and prioritised roadmap</li>
+        <li>Model benchmarking and cost comparison</li>
+        <li>Safety, privacy and evaluation review</li>
+        <li>Team training and handover documentation</li>
+      </ul>
+      <div class="meta">Typical delivery: 2–3 weeks</div>
+    </article>
+
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn btn-primary" href="mailto:zextrextechnology@gmail.com">Email the founders</a>
+      <button class="btn btn-ghost" data-close>Back to the site</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Projects window ===== -->
+<div class="view" id="view-projects" role="dialog" aria-modal="true" aria-label="Projects" aria-hidden="true">
+  <div class="view-bar">
+    <svg class="mark"><use href="#zmark"/></svg>
+    <b>Projects</b>
+    <button class="icon-btn" data-close style="margin-left:auto" aria-label="Close projects">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="view-body wrap">
+    <div class="sec-head">
+      <h2>Completed work</h2>
+      <p>A selection from 24 delivered projects. Client names are withheld where an agreement asks us to; the systems and the results are real.</p>
+    </div>
+    <div class="projects">
+
+      <article class="project">
+        <div class="sector">Retail · E-commerce</div>
+        <h3>Support assistant for an online store</h3>
+        <div class="tags"><span class="tag">Conversational AI</span><span class="tag">Urdu + English</span></div>
+        <p>A chat assistant handling order status, returns and sizing questions across the website and WhatsApp, escalating to the support team only when a refund needed approval.</p>
+        <div class="result"><b>68%</b> of tickets resolved without a human</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Logistics</div>
+        <h3>Delivery demand forecasting</h3>
+        <div class="tags"><span class="tag">Predictive</span><span class="tag">API</span></div>
+        <p>A seven-day forecast of parcel volume per zone, built on two years of dispatch history, feeding the rider rostering system each morning.</p>
+        <div class="result"><b>31%</b> drop in idle rider hours</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Education</div>
+        <h3>Study companion for a learning platform</h3>
+        <div class="tags"><span class="tag">Conversational AI</span><span class="tag">Retrieval</span></div>
+        <p>An assistant grounded on the platform's own course material that explains concepts, generates practice questions and tracks where a student keeps slipping.</p>
+        <div class="result"><b>2.4×</b> increase in lesson completion</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Finance</div>
+        <h3>Invoice reading and reconciliation</h3>
+        <div class="tags"><span class="tag">Automation</span><span class="tag">Document AI</span></div>
+        <p>Scanned invoices read, matched against purchase orders and pushed into the accounting system, with anything ambiguous queued for a human in seconds rather than days.</p>
+        <div class="result"><b>9 hours</b> of manual entry saved per week</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Healthcare operations</div>
+        <h3>Appointment triage assistant</h3>
+        <div class="tags"><span class="tag">Conversational AI</span><span class="tag">Escalation rules</span></div>
+        <p>A front-desk assistant that books, reschedules and answers clinic questions, routing anything clinical straight to staff under strict rules agreed with the practice.</p>
+        <div class="result"><b>43%</b> fewer missed appointments</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Real estate</div>
+        <h3>Property matching and lead scoring</h3>
+        <div class="tags"><span class="tag">Predictive</span><span class="tag">CRM integration</span></div>
+        <p>Incoming enquiries scored on likelihood to close and matched to listings, so the sales team called the right person first instead of the newest one.</p>
+        <div class="result"><b>22%</b> lift in viewings booked</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Manufacturing</div>
+        <h3>Quality anomaly detection</h3>
+        <div class="tags"><span class="tag">Predictive</span><span class="tag">Monitoring</span></div>
+        <p>Sensor readings from a production line watched continuously, flagging the drift that precedes a defective batch before the batch is finished.</p>
+        <div class="result"><b>Early warning</b> on 4 of 5 defect events</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Professional services</div>
+        <h3>Contract review assistant</h3>
+        <div class="tags"><span class="tag">Document AI</span><span class="tag">Applied research</span></div>
+        <p>A reviewer that reads incoming agreements against a firm's standard positions and marks the clauses that differ, with every flag linked back to the source text.</p>
+        <div class="result"><b>5×</b> faster first-pass review</div>
+      </article>
+
+      <article class="project">
+        <div class="sector">Internal</div>
+        <h3>Zextrex — our own assistant</h3>
+        <div class="tags"><span class="tag">Conversational AI</span><span class="tag">Voice</span></div>
+        <p>The assistant on this website: it greets every visitor by voice, answers in its own indirect style, and knows the company well enough to route people to the right inbox.</p>
+        <div class="result"><b>Live</b> — try it on this page</div>
+      </article>
+
+    </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn btn-primary" href="mailto:zextrextechnology@gmail.com">Discuss a project</a>
+      <button class="btn btn-ghost" data-close>Back to the site</button>
+    </div>
+  </div>
+</div>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <div class="chat-shell">
+    <div class="chat-top">
+      <svg class="mark"><use href="#zmark"/></svg>
+      <div><b>Zextrex</b><span>Ask me anything</span></div>
+      <button class="icon-btn" id="dockClose" style="margin-left:auto;width:32px;height:32px" aria-label="Close chat">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="log" id="dockLog" role="log" aria-live="polite"></div>
+    <form class="composer" id="dockForm">
+      <label class="sr" for="dockInput">Message Zextrex</label>
+      <input id="dockInput" autocomplete="off" placeholder="Ask Zextrex…">
+      <button class="send" type="submit" aria-label="Send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="contactOverlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div class="modal-head">
+      <svg class="mark"><use href="#zmark"/></svg>
+      <div>
+        <b id="contactTitle">Send us a message</b>
+        <span class="modal-to">Sending to <strong id="contactToEmail">zextrexsupport@gmail.com</strong></span>
+      </div>
+      <button class="icon-btn" id="contactClose" type="button" aria-label="Close">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form id="contactForm" class="modal-body">
+      <label class="field-label" for="contactEmail">Your email</label>
+      <input id="contactEmail" type="email" required placeholder="you@example.com" autocomplete="email">
+      <label class="field-label" for="contactMessage">What would you like to ask?</label>
+      <textarea id="contactMessage" required rows="5" placeholder="Tell us what you're trying to build, or what's going wrong…"></textarea>
+      <div class="modal-status" id="contactStatus" aria-live="polite"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="contactCancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="contactSend">Send</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<button class="launcher" id="launcher" aria-label="Open Zextrex chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<script>
+/* ============================================================
+   Zextrex Technology — front-end logic
+   1. Neural core animation
+   2. Voice greeting + speech
+   3. Zextrex assistant (Claude-powered, with offline fallback)
+   ============================================================ */
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- 1. neural core ---------- */
+(function core(){
+  const cv = document.getElementById('core');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, dpr, nodes = [];
+
+  function size(){
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const r = cv.getBoundingClientRect();
+    w = r.width; h = r.height;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    nodes = [];
+    const rings = [{n:6,r:.20},{n:11,r:.34},{n:15,r:.46}];
+    rings.forEach((ring,i)=>{
+      for(let k=0;k<ring.n;k++){
+        const a = (k/ring.n)*Math.PI*2 + i;
+        nodes.push({a, r:ring.r*Math.min(w,h), sp:(i%2?1:-1)*(0.00016+i*0.00007), s:1.4+Math.random()*1.8, ring:i});
+      }
+    });
+  }
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    const cx = w/2, cy = h/2;
+    const pts = nodes.map(n=>{
+      const a = n.a + (reduce?0:t*n.sp);
+      return {x:cx+Math.cos(a)*n.r, y:cy+Math.sin(a)*n.r*0.92, s:n.s, ring:n.ring};
+    });
+    for(let i=0;i<pts.length;i++){
+      for(let j=i+1;j<pts.length;j++){
+        const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        const d=Math.hypot(dx,dy);
+        if(d<Math.min(w,h)*0.19){
+          ctx.strokeStyle = `rgba(36,224,255,${(1-d/(Math.min(w,h)*0.19))*0.30})`;
+          ctx.lineWidth = .8;
+          ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke();
+        }
+      }
+    }
+    pts.forEach(p=>{
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+      ctx.fillStyle = p.ring===0 ? '#8b5cff' : '#24e0ff';
+      ctx.globalAlpha = .9; ctx.fill(); ctx.globalAlpha = 1;
+    });
+    const pulse = reduce ? 0.6 : 0.6 + Math.sin(t/900)*0.18;
+    const g = ctx.createRadialGradient(cx,cy,2,cx,cy,Math.min(w,h)*0.14);
+    g.addColorStop(0,`rgba(36,224,255,${pulse})`);
+    g.addColorStop(1,'rgba(139,92,255,0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,Math.min(w,h)*0.14,0,Math.PI*2); ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  addEventListener('resize', size);
+  size(); requestAnimationFrame(draw);
+})();
+
+/* ---------- 2. voice ---------- */
+const Voice = (function(){
+  let on = true;
+  let greeted = false;
+  const supported = 'speechSynthesis' in window;
+  const btn = document.getElementById('voiceBtn');
+
+  function pick(){
+    const v = speechSynthesis.getVoices() || [];
+    return v.find(x=>/en-(GB|US)/i.test(x.lang) && /female|zira|samantha|google uk english female/i.test(x.name))
+        || v.find(x=>/en/i.test(x.lang)) || null;
+  }
+  function say(text){
+    if(!on || !supported || !text) return;
+    try{
+      const u = new SpeechSynthesisUtterance(text);
+      const v = pick(); if(v) u.voice = v;
+      u.rate = 0.98; u.pitch = 1.03; u.volume = 1;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    }catch(e){/* silence is fine */}
+  }
+  function greet(force){
+    if(!supported) return;
+    if(greeted && !force) return;
+    greeted = true;
+    say('Welcome to Zextrex Technology. Engineering intelligence, shaping the future.');
+  }
+  function setOn(v){
+    on = v;
+    btn.style.borderColor = on ? 'var(--cyan)' : 'var(--line)';
+    btn.title = on ? 'Voice on' : 'Voice off';
+    if(!on && supported) speechSynthesis.cancel();
+  }
+  btn.addEventListener('click', ()=>{ setOn(!on); if(on) greet(true); });
+  setOn(true);
+
+  // browsers block audio until the first gesture — so try now, and again on first touch
+  if(supported){
+    if(speechSynthesis.getVoices().length === 0){
+      speechSynthesis.addEventListener('voiceschanged', ()=>{ if(!greeted) greet(); }, {once:true});
+    }
+    setTimeout(()=>greet(), 700);
+    const unlock = ()=>{ greet(); };
+    ['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev, unlock, {once:true}));
+  }
+  return { say, greet:()=>greet(true) };
+})();
+
+/* ---------- nav ---------- */
+const burger = document.getElementById('burger'), links = document.getElementById('links');
+burger.addEventListener('click', ()=>{
+  const open = links.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+links.addEventListener('click', e=>{ if(e.target.tagName==='A') links.classList.remove('open'); });
+
+/* ---------- full-screen views (Services / Projects) ---------- */
+function openView(name){
+  const v = document.getElementById('view-' + name);
+  if(!v) return;
+  document.querySelectorAll('.view.open').forEach(x=>{ x.classList.remove('open'); x.setAttribute('aria-hidden','true'); });
+  v.classList.add('open'); v.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
+  v.scrollTop = 0;
+  v.querySelector('[data-close]').focus();
+}
+function closeViews(){
+  document.querySelectorAll('.view.open').forEach(v=>{ v.classList.remove('open'); v.setAttribute('aria-hidden','true'); });
+  document.body.classList.remove('locked');
+}
+document.querySelectorAll('[data-view]').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); openView(a.dataset.view); });
+});
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeViews));
+
+/* ---------- 3. Zextrex assistant ----------
+   The persona and every model call now live in Python (see app.py /
+   assistant.py). This page only sends the visitor's message plus the
+   short chat history to POST /api/chat and speaks/renders the reply. */
+
+const GREETING = "Welcome to Zextrex Technology. Consider me the doorway rather than the door — ask about what we build, who built it, or anything else you are turning over, and I will point you toward the answer.";
+
+const SUGGESTIONS = [
+  "What does Zextrex Technology do?",
+  "Who are the founders?",
+  "How do I contact support?",
+  "Can you build an AI assistant for my business?"
+];
+
+/* shown only if the Flask backend cannot be reached at all */
+function networkFallback(){
+  return "The connection to the assistant's backend seems to be down at the moment — check that the Flask server (app.py) is running, then ask me again.";
+}
+
+const Assistant = (function(){
+  let ready = false;
+  const turns = [];               // {role:'user'|'assistant', content} kept for backend context
+  const logs = [document.getElementById('log'), document.getElementById('dockLog')];
+  const statusLine = document.getElementById('statusLine');
+
+  function bubble(role, text, id){
+    const els = logs.map(log=>{
+      const d = document.createElement('div');
+      d.className = 'msg ' + role;
+      d.textContent = text;
+      if(id) d.dataset.id = id;
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+      return d;
+    });
+    return els;
+  }
+  function typing(){
+    return logs.map(log=>{
+      const d = document.createElement('div');
+      d.className = 'msg bot typing';
+      d.innerHTML = '<span></span><span></span><span></span>';
+      log.appendChild(d); log.scrollTop = log.scrollHeight;
+      return d;
+    });
+  }
+
+  async function boot(){
+    bubble('bot', GREETING);
+    const chips = document.getElementById('chips');
+    SUGGESTIONS.forEach(q=>{
+      const b = document.createElement('button');
+      b.className = 'chip'; b.type = 'button'; b.textContent = q;
+      b.addEventListener('click', ()=>ask(q));
+      chips.appendChild(b);
+    });
+    ready = true;
+    statusLine.textContent = 'Assistant · online';
+  }
+
+  async function ask(text){
+    text = (text||'').trim();
+    if(!text || !ready) return;
+    bubble('me', text);
+    const dots = typing();
+
+    const finish = (answer)=>{
+      dots.forEach(d=>d.remove());
+      bubble('bot', answer);
+      turns.push({role:'user', content:text});
+      turns.push({role:'assistant', content:answer});
+      if(turns.length > 16) turns.splice(0, turns.length - 16);
+      Voice.say(answer);
+    };
+
+    try{
+      const res = await fetch('/api/chat', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ message: text, history: turns })
+      });
+      if(!res.ok) throw new Error('bad status ' + res.status);
+      const data = await res.json();
+      finish((data && data.reply ? data.reply : '').trim() || networkFallback());
+    }catch(err){
+      finish(networkFallback());
+    }
+  }
+
+  return { boot, ask };
+})();
+
+Assistant.boot();
+
+/* composers */
+function wire(formId, inputId){
+  const f = document.getElementById(formId), i = document.getElementById(inputId);
+  f.addEventListener('submit', e=>{
+    e.preventDefault();
+    const v = i.value; i.value = '';
+    Assistant.ask(v);
+  });
+}
+wire('form','input');
+wire('dockForm','dockInput');
+
+/* floating dock */
+const dock = document.getElementById('dock');
+function toggleDock(open){
+  dock.classList.toggle('open', open);
+  dock.setAttribute('aria-hidden', String(!open));
+  if(open) setTimeout(()=>document.getElementById('dockInput').focus(), 60);
+}
+document.getElementById('launcher').addEventListener('click', ()=>toggleDock(!dock.classList.contains('open')));
+document.getElementById('dockClose').addEventListener('click', ()=>toggleDock(false));
+document.getElementById('heroTalk').addEventListener('click', ()=>{
+  document.getElementById('zextrex').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>document.getElementById('input').focus(), 600);
+});
+/* ---------- contact modal ---------- */
+const contactOverlay = document.getElementById('contactOverlay');
+const contactForm = document.getElementById('contactForm');
+const contactEmailInput = document.getElementById('contactEmail');
+const contactMessageInput = document.getElementById('contactMessage');
+const contactStatus = document.getElementById('contactStatus');
+const contactSend = document.getElementById('contactSend');
+
+function openContact(){
+  contactStatus.textContent = '';
+  contactStatus.className = 'modal-status';
+  contactOverlay.classList.add('open');
+  contactOverlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
+  setTimeout(()=>contactEmailInput.focus(), 50);
+}
+function closeContact(){
+  contactOverlay.classList.remove('open');
+  contactOverlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
+}
+// every mailto: link on the page opens this modal instead of the mail app
+document.querySelectorAll('a[href^="mailto:"]').forEach(a=>{
+  a.addEventListener('click', e=>{ e.preventDefault(); openContact(); });
+});
+document.getElementById('contactClose').addEventListener('click', closeContact);
+document.getElementById('contactCancel').addEventListener('click', closeContact);
+contactOverlay.addEventListener('click', e=>{ if(e.target === contactOverlay) closeContact(); });
+
+contactForm.addEventListener('submit', async e=>{
+  e.preventDefault();
+  const email = contactEmailInput.value.trim();
+  const message = contactMessageInput.value.trim();
+  if(!email || !message) return;
+
+  contactSend.disabled = true;
+  contactStatus.className = 'modal-status';
+  contactStatus.textContent = 'Sending…';
+
+  try{
+    const res = await fetch('/api/contact', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email, message })
+    });
+    const data = await res.json().catch(()=>({}));
+    if(res.ok && data.ok){
+      contactStatus.className = 'modal-status ok';
+      contactStatus.textContent = 'Sent — the team will reply to ' + email + '.';
+      contactForm.reset();
+      setTimeout(closeContact, 1700);
+    } else {
+      contactStatus.className = 'modal-status err';
+      contactStatus.textContent = data.error || 'Could not send that just now. Please try again.';
+    }
+  }catch(err){
+    contactStatus.className = 'modal-status err';
+    contactStatus.textContent = 'Could not reach the server — check that app.py is running.';
+  }finally{
+    contactSend.disabled = false;
+  }
+});
+
+addEventListener('keydown', e=>{ if(e.key==='Escape'){ toggleDock(false); closeViews(); closeContact(); } });
+</script>
+</body>
+</html>
