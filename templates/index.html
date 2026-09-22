@@ -810,12 +810,19 @@ const Voice = (function(){
       speechSynthesis.speak(u);
     }catch(e){/* silence is fine */}
   }
+
   function greet(force){
     if(!supported) return;
     if(greeted && !force) return;
-    greeted = true;
-    say('Welcome to Zextrex Technology. Engineering intelligence, shaping the future.');
-  }
+    try{
+      const u = new SpeechSynthesisUtterance('Welcome to Zextrex Technology. Engineering intelligence, shaping the future.');
+      const v = pick(); if(v) u.voice = v;
+      u.rate = 0.98; u.pitch = 1.03; u.volume = 1;
+      u.onstart = ()=>{ greeted = true; };
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    }catch(e){/* silence is fine */}
+}
   function setOn(v){
     on = v;
     btn.style.borderColor = on ? 'var(--cyan)' : 'var(--line)';
